@@ -13,7 +13,7 @@ public class MandelbrotView: NSView {
         let startTime = NSDate().timeIntervalSince1970
         drawMandelbrot(rect)
         let elapsedTime = NSDate().timeIntervalSince1970 - startTime
-        Swift.print("Elapsed time: \(elapsedTime) seconds")
+        Swift.print("Elapsed time: \(elapsedTime) seconds", terminator: "")
         
         // Draw some coordinates
         // Axes
@@ -102,6 +102,6 @@ public class MandelbrotView: NSView {
             }
         }
         let elapsedTime = NSDate().timeIntervalSince1970 - startTime
-        Swift.print("Calculation time: \(elapsedTime)")
+        Swift.print("Calculation time: \(elapsedTime)", terminator: "")
     }
 }

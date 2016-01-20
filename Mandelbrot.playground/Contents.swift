@@ -16,7 +16,7 @@ var points = [  "a": ("Full Set", Complex(-0.75, 0.0), 0.7),
 
 // Focus on a point in the Complex plane
 func newMandelbrotRect(triple: (String, Complex, Double)) -> ComplexRect{
-    print("Exploring: \(triple.0)")
+    print("Exploring: \(triple.0)", terminator: "")
     var p1 = triple.1
     var p2 = triple.1
     let zoom = triple.2
