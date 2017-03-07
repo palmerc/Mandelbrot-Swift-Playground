@@ -53,7 +53,7 @@ public func abs(lhs:Complex) -> Double {
     return sqrt(lhs.real*lhs.real + lhs.imaginary*lhs.imaginary)
 }
 public func modulus(lhs:Complex) -> Double {
-    return abs(lhs)
+    return abs(lhs: lhs)
 }
 public func +(lhs: Double, rhs: Complex) -> Complex { // Real plus imaginary
     return Complex(lhs + rhs.real, rhs.imaginary)

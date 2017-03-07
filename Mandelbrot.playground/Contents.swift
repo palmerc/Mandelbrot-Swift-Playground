@@ -31,11 +31,11 @@ func newMandelbrotRect(triple: (String, Complex, Double)) -> ComplexRect{
 //: This playground renders the Mandelbrot set by running code embedded within the playground's Sources folder.  You can explore the Sources folder by opening the Project Navigator (CMD-1) and clicking the triangle next to the playground file.
 
 let m = MandelbrotView(frame: rect)
-m.mandelbrotRect = newMandelbrotRect(points["b"]!)
-m.mandelbrotRect = newMandelbrotRect(points["c"]!)
-m.mandelbrotRect = newMandelbrotRect(points["d"]!)
-m.mandelbrotRect = newMandelbrotRect(points["e"]!)
-m.mandelbrotRect = newMandelbrotRect(points["f"]!)
+m.mandelbrotRect = newMandelbrotRect(triple: points["b"]!)
+m.mandelbrotRect = newMandelbrotRect(triple: points["c"]!)
+m.mandelbrotRect = newMandelbrotRect(triple: points["d"]!)
+m.mandelbrotRect = newMandelbrotRect(triple: points["e"]!)
+m.mandelbrotRect = newMandelbrotRect(triple: points["f"]!)
 
 
 
