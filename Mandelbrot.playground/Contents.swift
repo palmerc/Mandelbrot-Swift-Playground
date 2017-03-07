@@ -2,7 +2,7 @@ import Cocoa
 
 //: ## Mandelbrot Set Playground
 
-let sideLength = 500
+let sideLength = 200
 let rect = CGRect(x: 0, y: 0, width: sideLength, height: sideLength)
 
 // Interesting points in the Mandelbrot Set
