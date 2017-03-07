@@ -7,11 +7,11 @@ public class MandelbrotView: NSView {
     let colorCount = 2000
     var colorSet : Array<NSColor> = Array()
    
-    public override func drawRect(rect : CGRect) {
+    public override func draw(_ rect : CGRect) {
         
-        NSBezierPath.fillRect(rect)
+        NSBezierPath.fill(rect)
         let startTime = NSDate().timeIntervalSince1970
-        drawMandelbrot(rect)
+        drawMandelbrot(rect: rect)
         let elapsedTime = NSDate().timeIntervalSince1970 - startTime
         Swift.print("Elapsed time: \(elapsedTime) seconds", terminator: "")
         
@@ -65,15 +65,15 @@ public class MandelbrotView: NSView {
         var z = Complex()
         for it in 1...colorCount {
             z = z*z + C
-            if modulus(z) > 2 {
+            if modulus(lhs: z) > 2 {
                 return colorSet[it] // bail as soon as the complex number is too big (you're outside the set & it'll go to infinity)
             }
         }
         // Yay, you're inside the set!
-        return NSColor.blackColor()
+        return NSColor.black
     }
     
-    func viewCoordinatesToComplexCoordinates(x x: Double, y: Double, rect: CGRect) -> Complex {
+    func viewCoordinatesToComplexCoordinates(x: Double, y: Double, rect: CGRect) -> Complex {
         let tl = mandelbrotRect.topLeft
         let br = mandelbrotRect.bottomRight
         let r = tl.real + (x/Double(rect.size.width * CGFloat(rectScale)))*(br.real - tl.real)
@@ -94,11 +94,15 @@ public class MandelbrotView: NSView {
         let height = Double(rect.size.height)
         let startTime = NSDate().timeIntervalSince1970
         initializeColors()
-        for x in 0.stride(through: width, by: blockiness) {
-            for y in 0.stride(through: height, by: blockiness) {
+        
+        
+        for x in stride(from: 0, to: width, by: blockiness) {
+//        for x in 0.stride(through: width, by: blockiness) {
+            for y in stride(from: 0, to: height, by: blockiness) {
+//            for y in 0.stride(through: height, by: blockiness) {
                 let cc = viewCoordinatesToComplexCoordinates(x: x, y: y, rect: rect)
-                computeMandelbrotPoint(cc).set()
-                NSBezierPath.fillRect(CGRect(x: x, y: y, width: blockiness, height: blockiness))
+                computeMandelbrotPoint(C: cc).set()
+                NSBezierPath.fill(CGRect(x: x, y: y, width: blockiness, height: blockiness))
             }
         }
         let elapsedTime = NSDate().timeIntervalSince1970 - startTime
